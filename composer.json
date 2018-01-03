@@ -1,6 +1,17 @@
 {
-  "autoload": {
-    "psr-4": {
+"name": "fadyeskander/demo",
+"description": "filter hotels",
+"licence": "DSD-3-Clause",
+"type": "library",
+"keywords": ["demo"],
+	"authors":[
+		{
+			"name": "fadyeskander",
+			"email": "dev_fadi2010@yahoo.com"
+		}
+	],
+  "autoload":{
+    "psr-4":{
       "Fadyeskander\\Demo\\": "src/",
       "Fadyeskander\\Demo\\Tests\\": "tests/"
     }
