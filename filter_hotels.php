@@ -4,8 +4,8 @@
  */		
 $hotel_data=file_get_contents("https://api.myjson.com/bins/tl0bp");
 $hotel_data_arr=json_decode($hotel_data,true);
-$object_to_array_data=object_to_array($hotel_data_arr);
- function objectToArray($d) {
+$object_to_array_data=objectToArray($hotel_data_arr);
+function objectToArray($d) {
         if (is_object($d)) {
             // Gets the properties of the given object
             // with get_object_vars function
@@ -24,6 +24,9 @@ $object_to_array_data=object_to_array($hotel_data_arr);
             return $d;
         }
     }	
+	
+ 
+// Sorting the array by key	
 $i=0;
 $j=0;
 $bool=false;
@@ -35,10 +38,9 @@ foreach($object_to_array_data['hotels'] as $val){
 			$bool=true;
 			$filter_data_arr=$object_to_array_data['hotels'][$i];
 		}
-	}elseif(  (isset($_GET['from']) && $_GET['from']!='')  ){ //&& (isset($_GET['to']) && $_GET['to']!='' )
+	}elseif(  (isset($_GET['from']) && $_GET['from']!='')  ){
 				foreach($object_to_array_data['hotels'][$i]['availability'] as $value){							
 				$check_exist_availability_from= in_array($_GET['from'],$object_to_array_data['hotels'][$i]['availability'][$j]);
-				//echo $i.','.$j.'<br>';
 				$check_exist_availability_to= in_array($_GET['to'],$object_to_array_data['hotels'][$i]['availability'][$j]);
 				if($check_exist_availability_from==true && $check_exist_availability_to==true){
 					$date_range=true;
@@ -56,7 +58,15 @@ if($bool==true){
 print_r($filter_data_arr);
 }elseif($date_range==true){
 print_r($filter_data_arr);
-}else{
+}elseif(isset($_GET['sort_by']) && $_GET['sort_by']=='hotelname'){
+	if(isset($_GET['order']) && $_GET['order']=='desc'){
+	arsort($object_to_array_data['hotels']);
+	}else{
+	asort($object_to_array_data['hotels']);
+	}
+	print_r($object_to_array_data);
+}
+else{
 	echo 'No Result Found';
 }
 ?>
