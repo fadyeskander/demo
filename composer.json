@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Fadyeskander\\Demo\\": "src/",
+      "Fadyeskander\\Demo\\Tests\\": "tests/"
+    }
+  }
+}
