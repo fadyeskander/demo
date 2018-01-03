@@ -22,4 +22,5 @@ Array ( [name] => Rotana Hotel [price] => 80.6 [city] => cairo [availability] =>
 #sort by hotel name desc and asc:
 #type in url sorty_by=hotelname and order desc or asc -- defualt is asc
 ex:filter_search/?sort_by=hotelname&order=desc
-
+#link of codeclimate https://codeclimate.com/github/fadyeskander/demo
+$link of travis https://travis-ci.org/fadyeskander/demo
